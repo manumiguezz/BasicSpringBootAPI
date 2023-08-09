@@ -1,15 +1,13 @@
 package com.manumiguezz.crudapplication.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "/employee")
+@Table(name = "employee")
 public class Employee {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -22,6 +20,10 @@ public class Employee {
     @Column(name = "email")
     private String email;
 
+    public Employee () {
+
+    }
+
     public Employee(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -30,6 +32,10 @@ public class Employee {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
