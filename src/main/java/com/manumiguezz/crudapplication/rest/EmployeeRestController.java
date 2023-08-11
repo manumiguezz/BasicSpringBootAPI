@@ -49,5 +49,10 @@ public class EmployeeRestController {
         return dbEmployee;
     }
 
+    @DeleteMapping("/employees")
+    public void deleteEmployee(@RequestBody int theId){
+        employeeService.deleteByID(theId);
+    }
+
 
 }
