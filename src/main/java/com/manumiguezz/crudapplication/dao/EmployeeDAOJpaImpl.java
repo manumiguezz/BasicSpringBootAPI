@@ -1,5 +1,6 @@
 package com.manumiguezz.crudapplication.dao;
 
+import com.manumiguezz.crudapplication.entity.Employee;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +9,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class EmployeeDAOJPAImpl implements Employee{
+public class EmployeeDAOJpaImpl implements EmployeeDAO {
 
     private EntityManager entityManager;
 
     @Autowired
-    public EmployeeDAOJPAImpl(EntityManager theEntityManager) {
+    public EmployeeDAOJpaImpl(EntityManager theEntityManager) {
         entityManager = theEntityManager;
     }
 
@@ -26,4 +27,5 @@ public class EmployeeDAOJPAImpl implements Employee{
 
         return employees;
     }
+
 }
