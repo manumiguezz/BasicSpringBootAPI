@@ -28,9 +28,9 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles`
 VALUES
-('john','ROLE_EMPLOYEE'),
-('mary','ROLE_EMPLOYEE'),
-('mary','ROLE_MANAGER'),
-('susan','ROLE_EMPLOYEE'),
-('susan','ROLE_MANAGER'),
-('susan','ROLE_ADMIN');
+('ramiro','ROLE_EMPLOYEE'),
+('matias','ROLE_EMPLOYEE'),
+('matias','ROLE_MANAGER'),
+('alejo','ROLE_EMPLOYEE'),
+('alejo','ROLE_MANAGER'),
+('alejo','ROLE_ADMIN');
