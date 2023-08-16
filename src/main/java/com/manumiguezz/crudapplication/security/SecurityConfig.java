@@ -9,34 +9,43 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+
+import javax.sql.DataSource;
 
 @Configuration
 public class SecurityConfig {
 
     @Bean
-    public InMemoryUserDetailsManager UserDetailsManager() {
-
-        UserDetails ramiro = User.builder()
-                .username("ramiro")
-                .password("{noop}examplepass")
-                .roles("EMPLOYEE")
-                .build();
-
-        UserDetails matias = User.builder()
-                .username("matias")
-                .password("{noop}examplepass")
-                .roles("EMPLOYEE", "TL")
-                .build();
-
-        UserDetails alejo = User.builder()
-                .username("alejo")
-                .password("{noop}examplepass")
-                .roles("EMPLOYEE", "TL", "ADMIN")
-                .build();
-
-        return new InMemoryUserDetailsManager(ramiro, matias, alejo);
+    public UserDetailsManager userDetailsManager (DataSource dataSource){
+        return new JdbcUserDetailsManager(dataSource);
     }
+
+//    @Bean
+//    public InMemoryUserDetailsManager UserDetailsManager() {
+//
+//        UserDetails ramiro = User.builder()
+//                .username("ramiro")
+//                .password("{noop}examplepass")
+//                .roles("EMPLOYEE")
+//                .build();
+//
+//        UserDetails matias = User.builder()
+//                .username("matias")
+//                .password("{noop}examplepass")
+//                .roles("EMPLOYEE", "TL")
+//                .build();
+//
+//        UserDetails alejo = User.builder()
+//                .username("alejo")
+//                .password("{noop}examplepass")
+//                .roles("EMPLOYEE", "TL", "ADMIN")
+//                .build();
+//
+//        return new InMemoryUserDetailsManager(ramiro, matias, alejo);
+//    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
